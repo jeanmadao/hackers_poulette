@@ -10,11 +10,11 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/support", methods=["GET"])
+@app.get("/support")
 def support_get():
     return render_template("support.html")
 
-@app.route("/support", methods=["POST"])
+@app.post("/support")
 def support_post():
     first_name =  request.form.get("first_name")
     last_name =  request.form.get("last_name")
