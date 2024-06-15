@@ -3,15 +3,18 @@
 {% block content %}
   <h2>Support</h2>
 
-  <form id="support-form">
+  <form action="/support" method="post" id="support-form">
     <fieldset>
       <legend>Support Form</legend>
 
       <div class="form-row">
-        <label for="first-name">First Name:</label>
-        <input type="text" id="first-name" name="first-name" required/>
-        <label for="last-name">Last Name:</label>
-        <input type="text" id="last-name" name="last-name" required/>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required/>
+        <span class="error"></span>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required/>
+        <span class="error"></span>
       </div>
 
       <div class="form-row">
@@ -24,29 +27,32 @@
           <option value="nl">Netherlands</option>
           <option value="us">United States</option>
         </select>
+        <span class="error"></span>
       </div>
 
       <div class="form-row">
         <label>Gender:</label>
 
-        <input type="radio" id="male" name="gender" required>
+        <input type="radio" id="male" value="male" name="gender" required>
         <label for="male">Male</label>
 
-        <input type="radio" id="female" name="gender" required>
+        <input type="radio" id="female" value="female" name="gender" required>
         <label for="female">Female</label>
 
-        <input type="radio" id="other" name="gender" required>
+        <input type="radio" id="other" value="other" name="gender" required>
         <label for="other">Other</label>
+
+        <span class="error"></span>
       </div>
 
       <div class="form-row">
         <label>Subject:</label>
 
         <input type="checkbox" id="repair" name="repair">
-        <label for="male">Repair</label>
+        <label for="repair">Repair</label>
 
         <input type="checkbox" id="order" name="order">
-        <label for="female">Order</label>
+        <label for="order">Order</label>
 
         <input type="checkbox" id="others" name="others">
         <label for="others">Others</label>
@@ -55,6 +61,7 @@
       <div class="form-row">
         <label for="message"></label>
         <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50" required></textarea>
+        <span class="error"></span>
       </div>
 
       <button>Submit</button>
