@@ -26,7 +26,7 @@ def support_post():
         subjects += 2
     if request.form.get("others") or subjects == 0:
         subjects += 1
-    message = request.form.get("gender")
+    message = request.form.get("message")
     return render_template("support.html")
 
 if __name__ == "__main__":
