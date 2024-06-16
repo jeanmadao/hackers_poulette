@@ -7,13 +7,12 @@
 }
 
 body {
-    width: 50rem;
-    border-radius: 30px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
 
+    width: 50rem;
+    border-radius: 30px;
 }
 
 header {
@@ -70,14 +69,6 @@ input[type=text] {
 
 input[type=text]:focus {
     border-color: #fe8019;
-}
-
-input[type=radio] {
-    border-color: #a89984;
-}
-
-input[type=checkbox] {
-    border-color: #a89984;
 }
 
 textarea {
