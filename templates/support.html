@@ -8,41 +8,50 @@
       <legend>Support Form</legend>
 
       <div class="form-row">
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required/>
-        <span class="error"></span>
-
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required/>
-        <span class="error"></span>
+        <div>
+          <label for="first_name">First Name*:</label>
+          <input type="text" id="first_name" name="first_name"/>
+        </div>
+        <span class="error">{{ support.errors["first_name"] }}</span>
       </div>
 
       <div class="form-row">
-        <label for="country">Country:</label>
-        <select name="country" id="country" required>
-          <option value="">--Please select your country--</option>
-          <option value="be">Belgium</option>
-          <option value="fr">France</option>
-          <option value="de">Germany</option>
-          <option value="nl">Netherlands</option>
-          <option value="us">United States</option>
-        </select>
-        <span class="error"></span>
+        <div>
+          <label for="last_name">Last Name*:</label>
+          <input type="text" id="last_name" name="last_name"/>
+        </div>
+        <span class="error">{{ support.errors["last_name"] }}</span>
       </div>
 
       <div class="form-row">
-        <label>Gender:</label>
+        <div>
+          <label for="country">Country*:</label>
+          <select name="country" id="country">
+            <option value="">--Please select your country--</option>
+            <option value="be">Belgium</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+            <option value="nl">Netherlands</option>
+            <option value="us">United States</option>
+          </select>
+        </div>
+        <span class="error">{{ support.errors["country"] }}</span>
+      </div>
 
-        <input type="radio" id="male" value="male" name="gender" required>
-        <label for="male">Male</label>
+      <div class="form-row">
+        <div>
+          <label>Gender*:</label>
 
-        <input type="radio" id="female" value="female" name="gender" required>
-        <label for="female">Female</label>
+          <input type="radio" id="male" value="male" name="gender">
+          <label for="male">Male</label>
 
-        <input type="radio" id="other" value="other" name="gender" required>
-        <label for="other">Other</label>
+          <input type="radio" id="female" value="female" name="gender">
+          <label for="female">Female</label>
 
-        <span class="error"></span>
+          <input type="radio" id="other" value="other" name="gender">
+          <label for="other">Other</label>
+        </div>
+        <span class="error">{{ support.errors["gender"] }}</span>
       </div>
 
       <div class="form-row">
@@ -59,9 +68,13 @@
       </div>
 
       <div class="form-row">
-        <label for="message"></label>
-        <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50" required></textarea>
-        <span class="error"></span>
+        <div>
+          <label for="message">Message*:</label>
+        </div>
+        <div>
+          <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50"></textarea>
+        </div>
+        <span class="error">{{ support.errors["message"] }}</span>
       </div>
 
       <button>Submit</button>

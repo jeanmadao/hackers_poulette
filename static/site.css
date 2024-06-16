@@ -92,6 +92,10 @@ select {
     background-color: #ebdbb2;
 }
 
+.error {
+    color: #fb4934;
+}
+
 fieldset {
     color: #282828;
     border: 2px solid;
