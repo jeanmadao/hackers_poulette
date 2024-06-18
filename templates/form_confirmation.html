@@ -1,10 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h2>Message sent, Thank you!</h2>
+<h2>Thank you for contacting us.</h2>
 
+<h3>Summary</h3>
 <div class="preview">
-  <div class="sender-info">
+  <div>
     <div>
       <label>From:</label>
       <span>
@@ -24,10 +25,23 @@
         {{ support.gender }}
       </span>
     </div>
+    <div>
+      <label>Subjects:</label>
+      {% if support.subjects | bitwise_and(4) %}
+        <span>Repair </span>
+      {% endif %}
+      {% if support.subjects | bitwise_and(2) %}
+        <span>Order </span>
+      {% endif %}
+      {% if support.subjects | bitwise_and(1) %}
+        <span>Others </span>
+      {% endif %}
+    </div>
   </div>
-  <div class="message-preview">
+  <hr />
+  <div>
   {% for line in support.message %}
-    <div>{{ line }}</div>
+    <div>&gt; {{ line }}</div>
   {% endfor %}
   </div>
 </div>

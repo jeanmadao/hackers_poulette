@@ -5,22 +5,26 @@ from flask import (
     request
 )
 from support_model import Support
+import mariadb
+from dotenv import dotenv_values
 
-# import mariadb
-# from dotenv import dotenv_values
-#
-#
-# config = dotenv_values(".env")
-#
-# # connection parameters
-# conn_params= {
-#     "user" : config["USER"],
-#     "password" : config["PASSWORD"],
-#     "host" : config["HOST"],
-#     "database" : config["DATABASE"]
-# }
+
+config = dotenv_values(".env")
+
+# connection parameters
+conn_params= {
+    "user" : config["USER"],
+    "password" : config["PASSWORD"],
+    "host" : config["HOST"],
+    "database" : config["DATABASE"]
+}
+
 
 app = Flask(__name__)
+
+@app.template_filter("bitwise_and")
+def bitwise_and(x, y):
+    return x & y
 
 @app.route("/")
 def index():
@@ -48,18 +52,19 @@ def support_post():
     message = request.form.get("message")
     support = Support(first_name, last_name, email, country, gender, subjects, message)
     if support.validate():
-        # # Establish a connection
-        # connection = mariadb.connect(**conn_params)
-        # cursor = connection.cursor()
-        #
-        # #POC, don't actually execute your SQl queries like this to avoid SQL injection
-        # query = f'INSERT INTO support VALUES("{first_name}", "{last_name}", "{email}", "{country}", "{gender}", {subjects}, "{message}")'
-        # print(query)
-        # cursor.execute(query)
-        # connection.commit()
-        #
-        # cursor.close()
-        # connection.close()
+        # Actually not ideal to connect and close session for each SQL query, but it's okay.
+        connection = mariadb.connect(**conn_params)
+        cursor = connection.cursor()
+
+        query = "INSERT INTO support VALUES(?, ?, ?, ?, ?, ?, ?)"
+        cursor.execute(query, 
+                       (first_name, last_name, email, country, gender, subjects, message)
+                       )
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
         return render_template("form_confirmation.html", support=support)
     else:
         return render_template("support.html", support=support)

@@ -40,11 +40,20 @@ ul {
 a {
     text-decoration: none;
     font-weight: bold;
-    color: #ebdbb2;
     padding: 3px;
+    color: #fe8019;
 }
 
 a:hover {
+    color: #ebdbb2;
+    background-color: #282828;
+}
+
+header a {
+    color: #ebdbb2;
+}
+
+header a:hover {
     color: #282828;
     background-color: #ebdbb2;
 }
@@ -122,8 +131,7 @@ label {
     font-weight: bold;
 }
 
-.sender-info,
-.message-preview {
+.preview {
     border: 1px solid;
     padding: 1rem;
     margin: 1rem;
