@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Message sent, Thank you!</h2>
+
+<div class="preview">
+  <div class="sender-info">
+    <div>
+      <label>From:</label>
+      <span>
+        {{ support.first_name }} {{ support.last_name }}
+        &lt;{{ support.email }}&gt;
+      </span>
+    </div>
+    <div>
+      <label>Country:</label>
+      <span>
+        {{ support.country }}
+      </span>
+    </div>
+    <div>
+      <label>Gender:</label>
+      <span>
+        {{ support.gender }}
+      </span>
+    </div>
+  </div>
+  <div class="message-preview">
+  {% for line in support.message %}
+    <div>{{ line }}</div>
+  {% endfor %}
+  </div>
+</div>
+    
+{% endblock %}

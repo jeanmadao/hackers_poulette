@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
 
-    background-color: #32302f;
+    background-color: #83a598;
     font-family: FiraCode Nerd Font;
 }
 
@@ -94,6 +94,7 @@ select {
 
 .error {
     color: #fb4934;
+    font-size: 0.75rem;
 }
 
 fieldset {
@@ -117,6 +118,17 @@ button {
     background-color: #ebdbb2;
 }
 
+label {
+    font-weight: bold;
+}
+
+.sender-info,
+.message-preview {
+    border: 1px solid;
+    padding: 1rem;
+    margin: 1rem;
+}
+
 footer {
     background-color: #282828;
     color: #ebdbb2;
@@ -129,6 +141,7 @@ footer {
 
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-weight: bold;

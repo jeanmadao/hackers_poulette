@@ -1,84 +1,92 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <h2>Support</h2>
+<h2>Support</h2>
 
-  <form action="/support" method="post" id="support-form">
-    <fieldset>
-      <legend>Support Form</legend>
+<form action="/support" method="post" id="support-form">
+<fieldset>
+  <legend>Support Form</legend>
 
-      <div class="form-row">
-        <div>
-          <label for="first_name">First Name*:</label>
-          <input type="text" id="first_name" name="first_name"/>
-        </div>
-        <span class="error">{{ support.errors["first_name"] }}</span>
-      </div>
+  <div class="form-row">
+    <div>
+      <label for="first_name">First Name*:</label>
+      <input type="text" id="first_name" name="first_name" 
+      value="{{ support.first_name or '' }}"/>
+    </div>
+    <span class="error">{{ support.errors["first_name"] }}</span>
+  </div>
 
-      <div class="form-row">
-        <div>
-          <label for="last_name">Last Name*:</label>
-          <input type="text" id="last_name" name="last_name"/>
-        </div>
-        <span class="error">{{ support.errors["last_name"] }}</span>
-      </div>
+  <div class="form-row">
+    <div>
+      <label for="last_name">Last Name*:</label>
+      <input type="text" id="last_name" name="last_name"/>
+    </div>
+    <span class="error">{{ support.errors["last_name"] }}</span>
+  </div>
 
-      <div class="form-row">
-        <div>
-          <label for="country">Country*:</label>
-          <select name="country" id="country">
-            <option value="">--Please select your country--</option>
-            <option value="be">Belgium</option>
-            <option value="fr">France</option>
-            <option value="de">Germany</option>
-            <option value="nl">Netherlands</option>
-            <option value="us">United States</option>
-          </select>
-        </div>
-        <span class="error">{{ support.errors["country"] }}</span>
-      </div>
+  <div class="form-row">
+    <div>
+      <label for="last_name">Email*:</label>
+      <input type="email" id="email" name="email"/>
+    </div>
+    <span class="error">{{ support.errors["email"] }}</span>
+  </div>
 
-      <div class="form-row">
-        <div>
-          <label>Gender*:</label>
+  <div class="form-row">
+    <div>
+      <label for="country">Country*:</label>
+      <select name="country" id="country">
+        <option value="">--Please select your country--</option>
+        <option value="be">Belgium</option>
+        <option value="fr">France</option>
+        <option value="de">Germany</option>
+        <option value="nl">Netherlands</option>
+        <option value="us">United States</option>
+      </select>
+    </div>
+    <span class="error">{{ support.errors["country"] }}</span>
+  </div>
 
-          <input type="radio" id="male" value="male" name="gender">
-          <label for="male">Male</label>
+  <div class="form-row">
+    <div>
+      <label>Gender*:</label>
 
-          <input type="radio" id="female" value="female" name="gender">
-          <label for="female">Female</label>
+      <input type="radio" id="male" value="male" name="gender">
+      <label for="male">Male</label>
 
-          <input type="radio" id="other" value="other" name="gender">
-          <label for="other">Other</label>
-        </div>
-        <span class="error">{{ support.errors["gender"] }}</span>
-      </div>
+      <input type="radio" id="female" value="female" name="gender">
+      <label for="female">Female</label>
 
-      <div class="form-row">
-        <label>Subject:</label>
+      <input type="radio" id="other" value="other" name="gender">
+      <label for="other">Other</label>
+    </div>
+    <span class="error">{{ support.errors["gender"] }}</span>
+  </div>
 
-        <input type="checkbox" id="repair" name="repair">
-        <label for="repair">Repair</label>
+  <div class="form-row">
+    <label>Subject:</label>
 
-        <input type="checkbox" id="order" name="order">
-        <label for="order">Order</label>
+    <input type="checkbox" id="repair" name="repair">
+    <label for="repair">Repair</label>
 
-        <input type="checkbox" id="others" name="others">
-        <label for="others">Others</label>
-      </div>
+    <input type="checkbox" id="order" name="order">
+    <label for="order">Order</label>
 
-      <div class="form-row">
-        <div>
-          <label for="message">Message*:</label>
-        </div>
-        <div>
-          <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50"></textarea>
-        </div>
-        <span class="error">{{ support.errors["message"] }}</span>
-      </div>
+    <input type="checkbox" id="others" name="others">
+    <label for="others">Others</label>
+  </div>
 
-      <button>Submit</button>
-    </fieldset>
-  </form>
+  <div class="form-row">
+    <div>
+      <label for="message">Message*:</label>
+    </div>
+    <div>
+      <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50"></textarea>
+    </div>
+    <span class="error">{{ support.errors["message"] }}</span>
+  </div>
 
+  <button>Submit</button>
+</fieldset>
+</form>
 {% endblock %}
