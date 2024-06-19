@@ -10,8 +10,8 @@
   <div class="form-row">
     <div>
       <label for="first_name">First Name*:</label>
-      <input type="text" id="first_name" name="first_name" 
-      value="{{ support.first_name or '' }}"/>
+      <input type="text" id="first_name" name="first_name"
+          value="{{ support.first_name or '' }}"/>
     </div>
     <span class="error">{{ support.errors["first_name"] }}</span>
   </div>
@@ -19,7 +19,8 @@
   <div class="form-row">
     <div>
       <label for="last_name">Last Name*:</label>
-      <input type="text" id="last_name" name="last_name"/>
+      <input type="text" id="last_name" name="last_name"
+          value="{{ support.last_name or '' }}"/>
     </div>
     <span class="error">{{ support.errors["last_name"] }}</span>
   </div>
@@ -27,7 +28,8 @@
   <div class="form-row">
     <div>
       <label for="last_name">Email*:</label>
-      <input type="email" id="email" name="email"/>
+      <input type="email" id="email" name="email"
+          value="{{ support.email or '' }}"/>
     </div>
     <span class="error">{{ support.errors["email"] }}</span>
   </div>
@@ -81,7 +83,7 @@
       <label for="message">Message*:</label>
     </div>
     <div>
-      <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50"></textarea>
+      <textarea id="message" name="message" placeholder="Content of your message..." rows="10" cols="50">{{ support.message or '' }}</textarea>
     </div>
     <span class="error">{{ support.errors["message"] }}</span>
   </div>
