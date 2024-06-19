@@ -10,7 +10,7 @@ class Validator:
 
     @staticmethod
     def validate_email(email):
-        regex = r"^\w+@\w+.\w{2,}$"
+        regex = r"^\w+@\w+.[a-z]{2,}$"
         if not re.match(regex, email):
             raise ValueError("Not a valid email address!")
         return True
