@@ -1,4 +1,5 @@
 from validator import Validator
+
 class Support:
     def __init__(self, first_name=None, last_name=None, email=None, country=None, gender=None, subjects=0, message=None):
         self.first_name = first_name
@@ -38,8 +39,15 @@ class Support:
                 Validator.validate_email(self.email)
             except ValueError as error:
                 self.errors["email"] = error
+
         if not self.country:
             self.errors["country"] = "Country required!"
+        else:
+            try:
+                Validator.validate_country(self.country)
+            except ValueError as error:
+                self.errors["country"] = error
+
         if not self.gender:
             self.errors["gender"] = "Gender required!"
         if not self.message:

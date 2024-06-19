@@ -5,19 +5,19 @@ from flask import (
     request
 )
 from support_model import Support
-import mariadb
-from dotenv import dotenv_values
-
-
-config = dotenv_values(".env")
-
-# connection parameters
-conn_params= {
-    "user" : config["USER"],
-    "password" : config["PASSWORD"],
-    "host" : config["HOST"],
-    "database" : config["DATABASE"]
-}
+# import mariadb
+# from dotenv import dotenv_values
+#
+#
+# config = dotenv_values(".env")
+#
+# # connection parameters
+# conn_params= {
+#     "user" : config["USER"],
+#     "password" : config["PASSWORD"],
+#     "host" : config["HOST"],
+#     "database" : config["DATABASE"]
+# }
 
 
 app = Flask(__name__)
@@ -52,18 +52,18 @@ def support_post():
     message = request.form.get("message")
     support = Support(first_name, last_name, email, country, gender, subjects, message)
     if support.validate():
-        # Actually not ideal to connect and close session for each SQL query, but it's okay.
-        connection = mariadb.connect(**conn_params)
-        cursor = connection.cursor()
-
-        query = "INSERT INTO support VALUES(?, ?, ?, ?, ?, ?, ?)"
-        cursor.execute(query, 
-                       (first_name, last_name, email, country, gender, subjects, message)
-                       )
-        connection.commit()
-
-        cursor.close()
-        connection.close()
+        # # Actually not ideal to connect and close session for each SQL query, but it's okay.
+        # connection = mariadb.connect(**conn_params)
+        # cursor = connection.cursor()
+        #
+        # query = "INSERT INTO support VALUES(?, ?, ?, ?, ?, ?, ?)"
+        # cursor.execute(query, 
+        #                (first_name, last_name, email, country, gender, subjects, message)
+        #                )
+        # connection.commit()
+        #
+        # cursor.close()
+        # connection.close()
 
         return render_template("form_confirmation.html", support=support)
     else:

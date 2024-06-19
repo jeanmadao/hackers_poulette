@@ -14,3 +14,10 @@ class Validator:
         if not re.match(regex, email):
             raise ValueError("Not a valid email address!")
         return True
+
+    @staticmethod
+    def validate_country(country):
+        regex = r"^(be|fr|de|nl|us)$"
+        if not re.match(regex, country):
+            raise ValueError("Not a valid country!")
+        return True
