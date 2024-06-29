@@ -5,11 +5,16 @@ from flask import (
     request
 )
 from support_model import Support
+from pymongo import MongoClient
+
+
 # import mariadb
-# from dotenv import dotenv_values
-#
-#
-# config = dotenv_values(".env")
+from dotenv import dotenv_values
+config = dotenv_values(".env")
+
+client = MongoClient(config["HOST"])
+db = client["hackers_poulette"]
+support_collection = db["support"]
 #
 # # connection parameters
 # conn_params= {
@@ -52,22 +57,12 @@ def support_post():
     message = request.form.get("message")
     support = Support(first_name, last_name, email, country, gender, subjects, message)
     if support.validate():
-        # # Actually not ideal to connect and close session for each SQL query, but it's okay.
-        # connection = mariadb.connect(**conn_params)
-        # cursor = connection.cursor()
-        #
-        # query = "INSERT INTO support VALUES(?, ?, ?, ?, ?, ?, ?)"
-        # cursor.execute(query, 
-        #                (first_name, last_name, email, country, gender, subjects, message)
-        #                )
-        # connection.commit()
-        #
-        # cursor.close()
-        # connection.close()
-
+        post = support.to_json()
+        support_collection.insert_one(post)
         return render_template("form_confirmation.html", support=support)
     else:
         return render_template("support.html", support=support)
 
 if __name__ == "__main__":
     app.run()
+

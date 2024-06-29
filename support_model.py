@@ -54,3 +54,15 @@ class Support:
             self.errors["message"] = "Message required!"
 
         return False if self.errors else True
+
+    def to_json(self):
+        return {
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "country": self.country,
+            "gender": self.gender,
+            "subjects": self.subjects,
+            "message": self.message,
+            "errors": self.errors,
+        }
